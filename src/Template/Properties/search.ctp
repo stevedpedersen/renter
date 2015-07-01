@@ -16,7 +16,7 @@
 
     <?php foreach ($properties as $property): ?>
     <tr>
-        <td><?= $this->Html->link('Rent', ['action' => 'rent']) ?></td>
+        <td><?= $this->Html->link('Rent', ['action' => 'rent', $property->id]) ?></td>
         <td><?= $property->unitType ?></td>
         <td><?= $property->address ?> 
             <?= $property->city ?>

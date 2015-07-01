@@ -92,31 +92,45 @@ class PropertiesController extends AppController
 
     public function rent($id)
     {
+        // no view to render
+        $this->autoRender = false;
+
+        $id--;
+        $http = new Client();
+        $response = $http->get('http://mgautschi.dev.at.sfsu.edu/building_mgmt/properties/api');
+
+        $rental = json_decode($response->body);
+
+        // echo $rental[$id - 1]->address;
+        // die;
+
         $property = $this->Properties->newEntity();
-        if ($this->request->is('post')) {
-            $property = $this->Properties->patchEntity($property, $this->request->data);
-            // Added this line
-            $property->user_id = $this->Auth->user('id');
-            $property->unitType;
-            $property->address; 
-            $property->city;
-            $property->state; 
-            $property->zip;
-            $property->building;
-            $property->unit;
-            $property->beds;
-            $property->baths;
-            $property->rent;
-            $property->squareFt;           
+
+        // Added this line
+        $property->user_id = $this->Auth->user('id');
+        $property->unitType = $rental[$id]->unitType;
+        $property->address = $rental[$id]->address; 
+        $property->city = $rental[$id]->city;
+        $property->state = $rental[$id]->state; 
+        $property->zip = $rental[$id]->zip;
+        $property->building = $rental[$id]->building;
+        $property->unitNumber = $rental[$id]->unit;
+        $property->beds = $rental[$id]->beds;
+        $property->baths = $rental[$id]->baths;
+        $property->rent = $rental[$id]->rent;
+        $property->square_feet = $rental[$id]->squareFt;           
 
 
-            if ($this->Properties->save($property)) {
-                $this->Flash->success(__('Your property has been saved.'));
-                return $this->redirect(['action' => 'search']);
-            }
-            $this->Flash->error(__('Unable to rent this property.'));
+        
+        if ($this->Properties->save($property)) {
+            $this->Flash->success(__('Your property has been saved.'));
+            return $this->redirect(['action' => 'search']);
         }
-        $this->set('property', $property);
+        //return $this->redirect(['action' => 'search']);
+
+        //$this->Flash->error(__('Unable to rent this property.'));
+
+        return $this->redirect(['action' => 'search']);
     }
 
     public function delete($id)

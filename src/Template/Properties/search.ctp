@@ -1,3 +1,5 @@
+<?php echo $this->element('sidebar'); ?>
+
 <h1>Available Properties</h1>
 <table class="table table-striped">
     <tr>

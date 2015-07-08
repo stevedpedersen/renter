@@ -1,3 +1,5 @@
+<?php echo $this->element('sidebar'); ?>
+
 <?php
 
 $location = str_replace(' ', '%20', "https://www.google.com/maps/embed/v1/place?q=" 
@@ -6,7 +8,7 @@ $location = str_replace(' ', '%20', "https://www.google.com/maps/embed/v1/place?
 		.$property->state . ", "
 		."United States, "
 		.$property->zip
-		."&key=AIzaSyBofA2RgbtF_-qYUgZzWJi9scKK5JDTW2U");
+		."&key=AIzaSyC-SGyJ3ak0wFm9mleUQV9wftiUJJiXB5Y");
 
 ?>
 

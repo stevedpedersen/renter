@@ -1,7 +1,9 @@
+<?php echo $this->element('sidebar'); ?>
+
 <!-- Single property view -->
 <?php
   $image_url = '"background-image: url(' . $property->image_url . ');"';
-  $location = str_replace(' ', '%20', "https://www.google.com/maps/search/bus stops " 
+  $location = str_replace(' ', '%20', "https://www.google.com/maps/search/MUNI stops near " 
     .$property->address . ", "
     .$property->city . ", "
     .$property->state);
@@ -19,9 +21,9 @@
   <div class="btn btn-lg btn-default col-xs-3 col-xs-offset-1"><?= $this->Html->link('Show on Map', 
     ['action' => 'map', $property->id]) ?>
   </div>
-  <div class="btn btn-lg btn-default col-xs-3 col-xs-offset-1"><?= $this->Html->link('Bus Information', $location) ?>
+  <div class="btn btn-lg btn-default col-xs-3 col-xs-offset-1"><?= $this->Html->link('Bus Information', ['action' => 'bus', $property->id]) ?>
   </div>
-  <div class="btn btn-lg btn-default col-xs-3 col-xs-offset-1"><?= $this->Html->link('Service Request', ['action' => 'service', $property->id]) ?>
+  <div class="btn btn-lg btn-default col-xs-3 col-xs-offset-1"><?= $this->Html->link('Service Request', ['controller' => 'ServiceRequests', 'action' => 'add', $property->id]) ?>
   </div>
 
 </div>

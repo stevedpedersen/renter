@@ -67,10 +67,15 @@ class MessagesController extends AppController
         
 
         $http = new Client();
+
         $response = $http->post(
             'http://spedersen.dev.at.sfsu.edu/renter_mgmt/messages/add',
             $message->to_json(), 
             ['type' => 'json']);
+        // $response = $http->post(
+        //     'http://spedersen.dev.at.sfsu.edu/renter_mgmt/messages/add',
+        //     $message->to_json(), 
+        //     ['type' => 'json']);
         
         $this->Flash->success(__('Your message has been sent.'));
         return $this->redirect(['action' => 'index']);

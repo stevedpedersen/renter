@@ -10,4 +10,9 @@ class PropertiesTable extends Table
 	{
 		$this->addBehavior('Timestamp');
 	}
+
+	public function isOwnedBy($propertyId, $userId)
+	{
+	    return $this->exists(['id' => $propertyId, 'user_id' => $userId]);
+	}
 }

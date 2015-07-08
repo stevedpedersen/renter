@@ -66,15 +66,13 @@ class PropertiesController extends AppController
         if ($this->request->is(['post', 'put'])) {
             $property = $this->Properties->patchEntity($property, $this->request->data);
             if ($this->Properties->save($property)) {
-                $message = 'Saved';
+                $this->Flash->success(__('Your property info has been saved.'));
+                return $this->redirect(['action' => 'index']);
             } else {
-                $message = 'Error';
+                $this->Flash->error(__('Unable to edit the property info.'));
             }
         }
-        $this->set([
-            'message' => $message,
-            '_serialize' => ['message']
-        ]);
+        $this->set('property', $property);
     }
 
     public function search()
@@ -123,7 +121,7 @@ class PropertiesController extends AppController
 
         
         if ($this->Properties->save($property)) {
-            $this->Flash->success(__('Your property has been saved.'));
+            $this->Flash->success(__('You are now renting at '. $property->address));
             return $this->redirect(['action' => 'search']);
         }
         //return $this->redirect(['action' => 'search']);
@@ -187,10 +185,35 @@ class PropertiesController extends AppController
     public function bus($id = null)
     {
         $property = $this->Properties->get($id);
+        $http = new Client();
+
+        $requestUrl = str_replace(' ', '+', "https://maps.googleapis.com/maps/api/geocode/json?address="
+            .$property->address.",+"
+            .$property->city.",+"
+            .$property->state
+            ."&key=AIzaSyC-SGyJ3ak0wFm9mleUQV9wftiUJJiXB5Y");
+        $request = file_get_contents($requestUrl);
+        $json = json_decode($request, true);
+        $lat = $json['results'][0]['geometry']['location']['lat'];
+        $lng = $json['results'][0]['geometry']['location']['lng'];
+
+// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7205614,-122.47586519999999&sensor=true&key=AIzaSyC-SGyJ3ak0wFm9mleUQV9wftiUJJiXB5Y&rankby=distance&types=bus_station&types=subway_station
+
+        $requestUrl = str_replace(' ', '+', "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+            .$lat.",".$lng
+            ."&sensor=true&key=AIzaSyC-SGyJ3ak0wFm9mleUQV9wftiUJJiXB5Y&rankby=distance&types=bus_station|subway_station|train_station");
+
+        $request = file_get_contents($requestUrl);
+        $stations = json_decode($request, true)['results'];
+
         //$property = $this->Properties->find('all');
         $this->set([
             'property' => $property,
             '_serialize' => ['property']
+        ]);
+        $this->set([
+            'stations' => $stations,
+            '_serialize' => ['stations']
         ]);
     }
 

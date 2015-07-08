@@ -1,10 +1,8 @@
 <!-- File: src/Template/Properties/index.ctp -->
-<?php
-    
-?>
+<?php echo $this->element('sidebar'); ?>
 
 
-<h1>Properties  <?php  ?></h1>
+<h1>My Properties  <?php  ?></h1>
 <table class="table table-striped">
     <tr>
         <th>--</th>
@@ -22,8 +20,7 @@
 
     <?php foreach ($properties as $property): ?>
     <tr>
-        <td><?= $this->Html->link('View', ['action' => 'view', $property->id]) ?> / 
-            <?= $this->Html->link('Edit', '') ?></td>
+        <td><?= $this->Html->link('View', ['action' => 'view', $property->id]) ?></td>
         <td><?= $property->unitType ?></td>
         <td><?= $property->address ?> 
             <?= $property->city ?>

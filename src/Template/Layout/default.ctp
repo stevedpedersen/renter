@@ -47,7 +47,7 @@ $cakeDescription = 'Renter Management Portal';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <span class="navbar-brand">Renter Management Portal</span>
+          <span class="navbar-brand" style="color:white; font-size:160%">Renter Management Portal</span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -62,22 +62,8 @@ $cakeDescription = 'Renter Management Portal';
       </div>
     </nav>
 
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li role="presentation"><?= $this->Html->link('View Properties', 
-                    ['controller' => 'Properties', 'action' => 'index']) ?></li>
-        <li role="presentation"><?= $this->Html->link('Add Property', 
-                    ['controller' => 'Properties', 'action' => 'add']) ?></li>
-        <li role="presentation"><?= $this->Html->link('Search Properties', 
-                    ['controller' => 'Properties', 'action' => 'search']) ?></li>
-
-      </ul>
-      <ul class="nav nav-sidebar">
-        <li role="presentation"><?= $this->Html->link('Messages', 
-                    ['controller' => 'Messages', 'action' => 'index']) ?></li>
-        <li role="presentation"><?= $this->Html->link('Send Test Message', 
-                    ['controller' => 'Messages', 'action' => 'send']) ?></li>
-      </ul>
+    <div id="sidebar">
+      <?php echo $this->fetch('sidebar');  ?>
     </div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

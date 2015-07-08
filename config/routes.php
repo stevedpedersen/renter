@@ -57,7 +57,7 @@ Router::scope('/', function ($routes) {
 
     $routes->extensions(['json']);
     $routes->resources('Properties');
-    $routes->resources('Messages');
+    $routes->resources('ServiceRequests');
 
     /**
      * Connect catchall routes for all controllers.

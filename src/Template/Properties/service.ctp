@@ -1,3 +1,5 @@
+<?php echo $this->element('sidebar'); ?>
+
 <?php
 
 use Cake\Network\Http\Client;

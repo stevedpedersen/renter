@@ -1,6 +1,6 @@
 <?php echo $this->element('sidebar'); ?>
 
-<h2>Add Property (leave field blank if not applicable)</h2>
+<h2>Edit Property (leave field blank if not applicable)</h2>
 
 
 <?= $this->Form->create($property) ?>
@@ -10,7 +10,8 @@
           'type' => 'text',
           'class' => 'form-control',
           'id' => 'inputUnitType',
-          'placeholder' => 'apt/house',
+          'placeholder' => $property->unitType,
+          'value' => $property->unitType,
           'label' => ['for' => 'inputUnitType']]) ?>
   </div>
   <div class="form-group">
@@ -18,7 +19,8 @@
           'type' => 'text',
           'class' => 'form-control',
           'id' => 'inputAddress',
-          'placeholder' => '1234 Main St.',
+          'placeholder' => $property->address,
+          'value' => $property->address,
           'label' => ['for' => 'inputAddress']]) ?>
   </div>
   <div class="form-group">
@@ -26,7 +28,8 @@
           'type' => 'text',
           'class' => 'form-control',
           'id' => 'inputCity',
-          'placeholder' => 'San Francisco',
+          'placeholder' => $property->city,
+          'value' => $property->city,
           'label' => ['for' => 'inputCity']]) ?>
   </div>
   <div class="form-group">
@@ -34,7 +37,8 @@
           'type' => 'text',
           'class' => 'form-control',
           'id' => 'inputState',
-          'placeholder' => 'CA',
+          'placeholder' => $property->state,
+          'value' => $property->state,
           'label' => ['for' => 'inputState']]) ?>
   </div>
   <div class="form-group">
@@ -42,7 +46,8 @@
           'type' => 'text',
           'class' => 'form-control',
           'id' => 'inputZip',
-          'placeholder' => '94132',
+          'placeholder' => $property->zip,
+          'value' => $property->zip,
           'label' => ['for' => 'inputAddress']]) ?>
   </div>
   <div class="form-group">
@@ -50,7 +55,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputBuilding',
-            'placeholder' => 'C',
+            'placeholder' => $property->building,
+            'value' => $property->building,
             'label' => ['for' => 'inputBuilding']]) ?>
   </div>
   <div class="form-group">
@@ -58,7 +64,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputUnitNumber',
-            'placeholder' => '267',
+            'placeholder' => $property->unitNumber,
+            'value' => $property->unitNumber,
             'label' => ['for' => 'inputUnitNumber']]) ?>
   </div>
   <div class="form-group">
@@ -66,7 +73,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputBeds',
-            'placeholder' => '3',
+            'placeholder' => $property->beds,
+            'value' => $property->beds,
             'label' => ['for' => 'inputBeds']]) ?>
   </div>
   <div class="form-group">
@@ -74,7 +82,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputBaths',
-            'placeholder' => '2',
+            'placeholder' => $property->baths,
+            'value' => $property->baths,
             'label' => ['for' => 'inputBaths']]) ?>
   </div>
   <div class="form-group">
@@ -82,7 +91,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputRent',
-            'placeholder' => '1800',
+            'placeholder' => $property->rent,
+            'value' => $property->rent,
             'label' => ['for' => 'inputRent']]) ?>
   </div>
   <div class="form-group">
@@ -90,7 +100,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputSquareFeet',
-            'placeholder' => '1600',
+            'placeholder' => $property->square_feet,
+            'value' => $property->square_feet,
             'label' => ['for' => 'inputSquareFeet']]) ?>
   </div>
   <div class="form-group">
@@ -98,7 +109,8 @@
             'type' => 'text',
             'class' => 'form-control',
             'id' => 'inputImageUrl',
-            'placeholder' => 'https://images.google.com/myhouse.jpg',
+            'placeholder' => $property->image_url,
+            'value' => $property->image_url,
             'label' => ['for' => 'inputImageUrl']]) ?>
   </div>
 
